@@ -1,0 +1,35 @@
+@startuml
+!theme plain
+hide circle
+hide empty methods
+skinparam classAttributeIconSize 0
+
+class User {
+  name : String
+  email : String
+  role : Role
+}
+enum Role <<enumeration>> {
+  CUSTOMER
+  DRIVER
+  ADMIN
+}
+class Pickup {
+  date : LocalDate
+  slotStart : LocalTime
+  address : String
+  crates : int
+  bags : int
+  status : PickupStatus
+}
+enum PickupStatus <<enumeration>> {
+  BOOKED
+  DONE
+  CANCELLED
+}
+
+User "1" -- "0..*" Pickup : bucht >
+User "0..1" -- "0..*" Pickup : fährt >
+User "0..*" --> "1" Role
+Pickup "0..*" --> "1" PickupStatus
+@enduml

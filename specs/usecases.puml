@@ -1,0 +1,22 @@
+@startuml
+!theme plain
+left to right direction
+skinparam actorStyle awesome
+
+actor "Besucher:in" as B
+actor "Kund:in" as K
+actor "Fahrer:in" as F
+actor "Admin" as A
+K -up-|> B
+
+rectangle "Leergut-Taxi" {
+  usecase "**Abholung buchen**\n(pickup)" as pickup
+  usecase "TODO\n(todo)" as todo1
+  usecase "TODO\n(todo)" as todo2
+}
+
+K --> pickup
+F --> pickup
+B --> todo1
+A --> todo2
+@enduml
